@@ -52,3 +52,4 @@ public class Course {
         this.instructor = instructor;
     }
 }
+

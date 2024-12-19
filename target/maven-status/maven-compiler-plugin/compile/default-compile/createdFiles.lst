@@ -1,6 +1,13 @@
+com/example/service/MemberService.class
 org/example/Main.class
+com/example/model/MemberDto.class
+com/example/controller/MemberController.class
+com/example/repository/MemberRepository.class
+com/example/model/UpdateCourseRequest.class
+com/example/model/Course.class
 com/example/Application.class
 com/example/controller/CourseController.class
 com/example/repository/CourseRepository.class
 com/example/service/CourseService.class
-com/example/model/Course.class
+com/example/dto/UpdateCourseNameReq.class
+com/example/model/Member.class

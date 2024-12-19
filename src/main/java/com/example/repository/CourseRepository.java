@@ -24,5 +24,6 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     @Query("SELECT COUNT(*) from Course where course_id = :id and course_name = :name")
     Integer getusercount(@Param("id") Long id, @Param("name") String name);
-}
+    }
+
 
