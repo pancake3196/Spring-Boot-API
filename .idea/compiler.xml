@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="your-artifact-id" />
+        <module name="gogofnd-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

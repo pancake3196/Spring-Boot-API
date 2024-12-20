@@ -2,8 +2,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!-- Spring Boot starter-parent 설정 -->
-
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gogofnd</groupId>
@@ -21,7 +19,6 @@
 
     <dependencies>
         <!-- Spring Boot 기본 의존성 (starter) -->
-        <!-- Spring MVC를 기반으로 한 웹 애플리케이션 및 REST API 개발을 지원합니다.-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -48,7 +45,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>2.7.13</version> <!-- 사용 중인 Spring Boot 버전과 일치하도록 수정 -->
+            <version>${spring.boot.version}</version> <!-- Spring Boot 버전 일치 -->
         </dependency>
 
         <!-- MariaDB JDBC Driver -->
@@ -58,14 +55,20 @@
             <version>${mariadb.version}</version>
         </dependency>
 
-        <!-- MyBatis Spring Boot Starter (사용하지 않으면 주석 처리하거나 삭제) -->
-        <!--
+        <!-- QueryDSL JPA 의존성 (QueryDSL 4.x) -->
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.2.0</version>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>4.4.0</version>
         </dependency>
-        -->
+
+        <!-- QueryDSL APT 의존성 (Annotation Processor) -->
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>4.4.0</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- JAXB 의존성 (XML과 Java 객체 간의 변환을 위한 라이브러리) -->
         <dependency>
@@ -78,11 +81,36 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>2.3.3</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- QueryDSL을 위한 Maven Plugin 설정 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>com.querydsl</groupId>
+                            <artifactId>querydsl-apt</artifactId>
+                            <version>4.4.0</version> <!-- 최신 버전 사용 -->
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+
+
             <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -100,6 +128,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
             </plugin>
+
         </plugins>
     </build>
 

@@ -1,24 +1,16 @@
 package com.example.model;
 
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class UpdateCourseRequest {
     private Integer courseId;
     private String courseName;
 
-    // Getter 및 Setter
-    public Integer getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
 }
+    // Getter 및 Setter
+
 

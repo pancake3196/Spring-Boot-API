@@ -21,11 +21,15 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
-
-
 //select = param, insert,update,delete =
 @GetMapping("/selectuser")
-public List<MemberDto> selectuserinformation(@RequestParam String id){
+public List<MemberDto> selectUserInformation(@RequestParam String id){
     return memberService.selectuserinformation(id);
 }
 }
+
+selectuserinformation;
+
+select_user_infomation // snakeCase
+selectUserInfomation // camelCase - method Name
+SelectUserInfomation // paskalCase - Class Name, File

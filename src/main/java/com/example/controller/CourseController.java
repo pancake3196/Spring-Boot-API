@@ -1,8 +1,8 @@
 package com.example.controller;
-
 import com.example.dto.UpdateCourseNameReq;
 import com.example.model.Course;
 import com.example.service.CourseService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +41,7 @@ public class CourseController {
     }
 
     @PutMapping("/putbody")
-    public String updatebodyCoruse(@RequestBody UpdateCourseNameReq req){//
+    public String updatebodyCoruse(@RequestBody @NotNull UpdateCourseNameReq req){//
         return courseService.updateCourse(req.getId(), req.getName());
     }
 
