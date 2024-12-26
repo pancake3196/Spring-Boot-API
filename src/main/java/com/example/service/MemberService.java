@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.model.Member;
 import com.example.model.MemberDto;
 import com.example.repository.MemberRepository;
+import com.example.repository.MemberRepositoryCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,9 @@ public class MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
+
+    @Autowired
+    private MemberRepositoryCustom memberRepositoryCustom;
 
     public List<MemberDto> selectuserinformation(String reqId){
         List<Object[]> results = memberRepository.selectuserinformation(reqId);
@@ -34,5 +38,14 @@ public class MemberService {
         }
 
         return memberDtos;
+    }
+
+    //동일하니 패스
+    public Member getMembers(String id) {
+    return memberRepositoryCustom.findByMember(id);
+}
+
+    public Member postMappping(Member member){
+    return memberRepository.save(member);
     }
 }

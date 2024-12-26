@@ -15,6 +15,7 @@
         <lombok.version>1.18.24</lombok.version>
         <mariadb.version>3.0.4</mariadb.version>
         <springdoc.version>2.1.0</springdoc.version> <!-- Springdoc OpenAPI 버전 -->
+        <querydsl.version>5.0.0</querydsl.version>
     </properties>
 
     <dependencies>
@@ -55,21 +56,6 @@
             <version>${mariadb.version}</version>
         </dependency>
 
-        <!-- QueryDSL JPA 의존성 (QueryDSL 4.x) -->
-        <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-jpa</artifactId>
-            <version>4.4.0</version>
-        </dependency>
-
-        <!-- QueryDSL APT 의존성 (Annotation Processor) -->
-        <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-apt</artifactId>
-            <version>4.4.0</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- JAXB 의존성 (XML과 Java 객체 간의 변환을 위한 라이브러리) -->
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
@@ -87,11 +73,57 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- Query DSL  -->
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-core</artifactId>
+            <version>${querydsl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>${querydsl.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>${querydsl.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
-            <!-- QueryDSL을 위한 Maven Plugin 설정 -->
+
+            <!-- Spring Boot Maven Plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+            </plugin>
+
+            <!-- Query DSL Apt Maven Plugin -->
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+                <version>1.1.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/generated-sources
+                            </outputDirectory>
+                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -101,34 +133,13 @@
                     <target>11</target>
                     <annotationProcessorPaths>
                         <path>
-                            <groupId>com.querydsl</groupId>
-                            <artifactId>querydsl-apt</artifactId>
-                            <version>4.4.0</version> <!-- 최신 버전 사용 -->
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-
-
-
-            <!-- Maven Compiler Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>11</source>
-                    <target>11</target>
-                </configuration>
-            </plugin>
-
-            <!-- Spring Boot Maven Plugin -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
-            </plugin>
-
         </plugins>
     </build>
 

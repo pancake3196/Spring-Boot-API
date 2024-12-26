@@ -5,10 +5,7 @@ import com.example.model.Member;
 import com.example.model.MemberDto;
 import com.example.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,20 +13,37 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/member")
-public class MemberController {
+public class MemberController{
 
     @Autowired
     private MemberService memberService;
 
-//select = param, insert,update,delete =
-@GetMapping("/selectuser")
-public List<MemberDto> selectUserInformation(@RequestParam String id){
-    return memberService.selectuserinformation(id);
-}
+    //select = param, insert,update,delete =
+    @GetMapping("/selectuser")
+    public List<MemberDto> selectUserInformation(@RequestParam String id){
+        return memberService.selectuserinformation(id);
+    }
+
+
+    //일단 일반적인 jpa 와 동일하니 패스
+    @GetMapping("/all")
+    public Member getMembers(@RequestParam String id){
+        return memberService.getMembers(id);
+    }
+    @PostMapping("/insert")
+    public Member postMember(@RequestBody Member member){
+        return memberService.postMappping(member);
+
+    }
+
 }
 
-selectuserinformation;
 
-select_user_infomation // snakeCase
-selectUserInfomation // camelCase - method Name
-SelectUserInfomation // paskalCase - Class Name, File
+//클라이언트로 받아오니까 json멤버와 동일하게
+
+
+//selectuserinformation;
+//
+//select_user_infomation // snakeCase
+//selectUserInfomation // camelCase - method Name
+//SelectUserInfomation // paskalCase - Class Name, File

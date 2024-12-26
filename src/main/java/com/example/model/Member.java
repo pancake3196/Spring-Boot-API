@@ -1,5 +1,8 @@
 package com.example.model;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,8 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "member")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
-@Id
+    @Id
     @Column(name = "id",length = 13)
     private String id;
 
