@@ -44,7 +44,7 @@ public class MemberController{
     public String DeleteUser(@RequestParam String id){
         return memberService.DeleteUser(id);
     }
-}
+
 
 
 //클라이언트로 받아오니까 json멤버와 동일하게
@@ -52,6 +52,30 @@ public class MemberController{
 
 //selectuserinformation;
 //
-//select_user_infomation // snakeCase
-//selectUserInfomation // camelCase - method Name
-//SelectUserInfomation // paskalCase - Class Name, File
+//select_user_information // snakeCase
+//selectUserInformation // camelCase - method Name
+//SelectUserInformation // pascalCase - Class Name, File
+
+
+
+
+@PostMapping("/InsertUser")
+public Member MakeUser(@RequestBody Member insert){
+    return memberService.createuser(insert);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

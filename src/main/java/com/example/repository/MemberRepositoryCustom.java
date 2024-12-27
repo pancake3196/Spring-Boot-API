@@ -15,6 +15,7 @@ public interface MemberRepositoryCustom {
     String UpdateUser(String OldPassword, String NewPassword);
 
     String DeleteUser(String id);
+
 }
 
 

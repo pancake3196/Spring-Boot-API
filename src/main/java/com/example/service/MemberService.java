@@ -6,11 +6,12 @@ import com.example.repository.MemberRepository;
 import com.example.repository.MemberRepositoryCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@Transactional
 @Service
 public class MemberService {
 
@@ -64,4 +65,30 @@ public class MemberService {
     public String DeleteUser(String id){
         return memberRepositoryCustom.DeleteUser(id);
     }
+
+
+
+
+    public Member createuser(Member insert){
+        return memberRepository.save(insert);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

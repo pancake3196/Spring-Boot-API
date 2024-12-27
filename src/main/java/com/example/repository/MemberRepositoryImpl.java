@@ -3,6 +3,8 @@ package com.example.repository;
 import com.example.model.Member;
 import com.example.model.QMember;
 
+import com.querydsl.core.Tuple;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -103,6 +105,25 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
 
     }
 
+
+
+
+//    /// select id,name,email from member where status='1' and email = 'linda@gmail.com'order by name asc
+//@Transactional
+//    public Member SelectMember(String email){
+//
+// return (Member) jpaQueryFactory
+//            .select(member.id,member.name,member.email)
+//            .from(member)
+//            .where(member.status.eq(1))
+//            .where(member.email.eq(email))
+//            .orderBy(member.name.asc())
+//            .fetchOne();
+//}
+
+
+
+    
 
 }
 
