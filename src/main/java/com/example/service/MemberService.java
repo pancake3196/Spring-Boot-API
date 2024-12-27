@@ -45,7 +45,23 @@ public class MemberService {
     return memberRepositoryCustom.findByMember(id);
 }
 
-    public Member postMappping(Member member){
-    return memberRepository.save(member);
+    public String PostMappping(Member member1){
+        return memberRepositoryCustom.InsertMember(member1);
+    }
+    public String UpdatePassword(String OldPassword, String NewPassword){
+        return memberRepositoryCustom.UpdateUser(OldPassword, NewPassword);
+//        try {
+//            if(status.equals("y")){
+//                return "ok";
+//            }else {
+//                return "500 error";
+//            }
+//        } catch (Exception e) {//     throw new RuntimeException(e);
+//        }
+    }
+
+
+    public String DeleteUser(String id){
+        return memberRepositoryCustom.DeleteUser(id);
     }
 }

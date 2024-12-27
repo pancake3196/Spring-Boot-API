@@ -31,11 +31,19 @@ public class MemberController{
         return memberService.getMembers(id);
     }
     @PostMapping("/insert")
-    public Member postMember(@RequestBody Member member){
-        return memberService.postMappping(member);
-
+    public String postMember(@RequestBody Member member1){
+        return memberService.PostMappping(member1);
     }
 
+    @PatchMapping("/update")
+    public String UpdateUser(@RequestParam String OldPassword, String NewPassword){
+        return memberService.UpdatePassword(OldPassword, NewPassword);
+    }
+
+    @DeleteMapping("/delete")
+    public String DeleteUser(@RequestParam String id){
+        return memberService.DeleteUser(id);
+    }
 }
 
 
