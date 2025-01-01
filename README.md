@@ -7,7 +7,7 @@
 - **언어 및 프레임워크**: Java, Spring Boot
 - **빌드 도구**: Maven
 - **데이터베이스**: MySQL
-- **기술 스택**: Spring Data JPA, QueryDSL, Lombok, Postman
+- **기술 스택**: Spring Data JPA,JPA Custom Repository, QueryDSL, Lombok, Postman
 
 ---
 
