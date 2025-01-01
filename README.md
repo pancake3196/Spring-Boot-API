@@ -1,6 +1,6 @@
 # 사용자 관리 API 프로젝트
 
-이 프로젝트는 Spring Boot를 사용하여 사용자 관리 기능을 구현한 CRUD API 예제입니다. JPA Custom Repository와 QueryDSL을 활용하여 복잡한 조회 로직을 구현했으며, Postman을 사용하여 API 테스트를 진행했습니다.
+이 프로젝트는 Spring Boot를 사용하여 사용자 관리 기능을 구현한 CRUD API 예제입니다. JPA Custom Repository와 QueryDSL을 활용하여 조회 로직을 구현했으며, Postman을 사용하여 API 테스트를 진행했습니다.
 
 ## 프로젝트 개요
 
@@ -72,15 +72,7 @@
 - `membership`: 1 또는 2만 허용
 - `status`: 1~3만 허용
 
-#### 2. **Authorization 및 인증 정보**
-만약 이 API가 인증이 필요하다면, Authorization 헤더 정보(예: Bearer 토큰 등)를 포함합니다.
-
-- **헤더 예시**:
-  ```
-  Authorization: Bearer <ACCESS_TOKEN>
-  ```
-
-#### 3. **추가 가능한 Request Body 필드**
+#### 2. **추가 가능한 Request Body 필드**
 필요 시 추가적인 정보도 처리할 수 있습니다. 예를 들어:
 
 ```json
@@ -90,7 +82,7 @@
 }
 ```
 
-#### 4. **상태 코드**
+#### 3. **상태 코드**
 | 상태 코드 | 설명                           |
 |-----------|--------------------------------|
 | 201       | 생성 성공                      |
